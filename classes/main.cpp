@@ -1,6 +1,29 @@
 #include<iostream>
 #include "triangle.hpp"
 
+Triangle getLargest(Triangle t1, Triangle t2) {
+    if(t1.getArea() >= t2.getArea()){
+        return t1;
+    }
+    else
+        return t2;
+}
+
+// Return a new traingle with the sum of the sides of t1 and t2
+Triangle addTriangles(Triangle t1, Triangle t2) {
+    float newSideA = t1.getSideA() + t2.getSideA();
+    float newSideB = t1.getSideB() + t2.getSideB();
+    float newSideC = t1.getSideC() + t2.getSideC();
+    Triangle t3 = Triangle(newSideA, newSideB, newSideC);
+    return t3;
+
+}
+
+void increaseSideABy5(Triangle &t) {
+    t.setSideA(t.getSideA() + 5);
+    cout << "Value of Side A in function: " << t.getSideA() << endl;
+}
+
 int main() {
     Triangle t1 = Triangle(10, 25, 16); // t1 = Triangle();
     // t1.setSideA(10);
@@ -30,7 +53,25 @@ int main() {
     cout << "Coordinates: (" << t3.getCoordinates().getPosX() << ", " << t3.getCoordinates().getPosY() << ")";
 
     Coordinates c = t3.getCoordinates();
-    int x = t3.getCoordinates().getPosX(); // c.getPosX()
-    cout << "Coordinates2: (" << c.getPosX() << ", " << c.getPosY() << ")";
+    // int x = t3.getCoordinates().getPosX(); // c.getPosX()
+    cout << "Coordinates2: (" << c.getPosX() << ", " << c.getPosY() << ")" << endl;
+
+    // Triangle res = getLargest(t1, t2);
+    // cout << "Largest between T1 and T2: " << res.toString() << endl;
+
+    // res = addTriangles(t1, t2);
+    // cout << "Sum of T1 and T2: " << res.toString() << endl;
+
+    cout << "Value of Side A in main: " << t1.getSideA() << endl;
+    increaseSideABy5(t1);
+    cout << "Value of Side A in main: " << t1.getSideA()<< endl;
+    {
+        Triangle t4;
+        cout << "What is the triangle count? " << Triangle::getCount()<< endl;
+    }
+
+    cout << "What is the triangle count? " << t1.getCount()<< endl;
+    cout << "What is the triangle count? " << t2.getCount()<< endl;
+    cout << "What is the triangle count? " << Triangle::getCount()<< endl;
 
 }

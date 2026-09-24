@@ -11,15 +11,11 @@ class Triangle {
         float sideB;
         float sideC;
         Coordinates coord;
-        static int triangleCount; 
     public:
         // CONstructors
         Triangle();
         Triangle(float sideA, float sideB, float sideC);
         Triangle(float sideA, float sideB); // C is 10 by default
-        ~Triangle() {
-            triangleCount--;
-        }
         // Getters
         float getSideA() const {
             return this->sideA;
@@ -47,8 +43,4 @@ class Triangle {
 
         float getPerimeter() const;
         float getArea() const;
-        string toString() const;
-        static int getCount() {
-            return triangleCount;
-        }
 };

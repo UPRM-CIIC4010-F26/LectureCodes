@@ -1,9 +1,7 @@
 #include"triangle.hpp"
 
-int Triangle::triangleCount = 0; 
 Triangle::Triangle(float sideA, float sideB, float C): sideA(sideA), sideB(sideB), sideC(C) { 
     this->coord = Coordinates(15, 15);
-    triangleCount++;
 }
 Triangle::Triangle(): Triangle(10, 15, 20) {
     // this->sideA = 10;
@@ -29,8 +27,4 @@ float Triangle::getArea() const {
 
     float area = sqrt(s * (s-sideA) * (s-sideB) * (s-sideC));
     return area;
-}
-
-string Triangle::toString() const {
-    return "(" + to_string(this->sideA) + ", " + to_string(this->sideB) + ", " + to_string(this->sideC) + ")";
 }
