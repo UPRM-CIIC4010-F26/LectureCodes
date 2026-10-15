@@ -39,12 +39,12 @@ float getAverageAge(Person people[], int size) {
 }
 
 int main() {
-    string names[] = {"John", "Mary", "Carlos", "Ben", "Jil"};
-    int ages[] = {12, 45, 73, 56, 65};
+    string names[] = {"John", "Mary", "Carlos", "Ben", "Jil", "Zeke"};
+    int ages[] = {12, 45, 73, 56, 65, 32};
 
-    Person people[5] = {Person("Ben", 12), Person("Jil", 34)};
+    Person people[5];
 
-    for(int i = 0; i < 5; i ++) {
+    for(int i = 0; i < 6; i ++) {
         people[i] = Person(names[i], ages[i]);
     }
 
@@ -55,5 +55,23 @@ int main() {
     Person oldest = getOldestPerson(people, 5);
     cout << "Oldest person: " << oldest.getName() << " (" << oldest.getAge() << ")\n";
     cout << "Average age: " << getAverageAge(people, 5) << endl;
+
+
+    Person minName = people[0];
+    for(int i = 1; i < 6; i++) {
+        if(minName.getName() > people[i].getName())
+            minName = people[i];
+    }
+    cout << "The person with the smallest name (alphabetically) is: " << minName.getName() << endl;
+
+    // Print the position of the oldest person
+    // Person oldestPerson = people[0];
+    int pos = 0;
+    for(int i = 1; i < 6; i++) {
+        if(people[pos].getAge() < people[i].getAge()){
+            pos = i;
+        }
+    }
+    cout << "The oldest Person is: " << people[pos].getName() << endl;
     
 }
