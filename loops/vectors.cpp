@@ -112,8 +112,8 @@ int main() {
         cout << squares[i].toString() << endl;
     cout << endl;
 
-    cout << "Rectangles in inverse order" << endl;
-    for(auto it = rectangles.rbegin(); it != rectangles.rend(); it++) {
+    cout << "Rectangles using iterators" << endl;
+    for(auto it = rectangles.begin(); it != rectangles.end(); it++) {
         cout << it->toString() << endl;
     }
 }
