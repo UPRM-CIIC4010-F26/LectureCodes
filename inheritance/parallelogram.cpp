@@ -9,7 +9,7 @@ class Parallelogram {
     double height;
     double base;
     double angle;// In degrees.
-
+    
     protected:
     void saySomething() { cout << "Im protected";}
 
@@ -19,6 +19,7 @@ class Parallelogram {
         this->base = base;
         this->angle = angle;
         cout << "Parallelogram constructor" << endl;
+        cout << "Height: " << height << ", base: " << base <<  "Angle: " << angle << endl;
     }
     Parallelogram() : Parallelogram(10, 10, 90){}
 
@@ -67,6 +68,8 @@ class Rectangle: public Parallelogram {
     public:
         Rectangle(int height, int base): Parallelogram(height, base, 90) {
             cout << "Rectangle constructor" << endl;
+            cout << "Height: " << height << ", base: " << base << endl;
+
         }
         ~Rectangle() {
             cout << "Rectangle died" << endl;
@@ -74,6 +77,25 @@ class Rectangle: public Parallelogram {
         void sayHello() {
             cout << "I'm a rectangle. Hello!" << endl;
         }
+        string getShapeName() override {
+            return "Rectangle";
+        }
+};
+
+class Square: public Rectangle {
+    public:
+    Square(int side): Rectangle(side, side){
+        cout << "Square Constructor" << endl;
+        cout << "Side: " << side << endl;
+
+    }
+    ~Square() {
+        cout << "Square died" << endl;
+
+    }
+    string getShapeName() override {
+        return "Square";
+    }
 };
 
 int main() {
@@ -87,10 +109,30 @@ int main() {
     // cout << "Area rectangle: " << r1.getArea() << endl;
     // cout << "Rectangle shape: " << r1.getShapeName() << endl;
 
-    Parallelogram *p2 = new Rectangle(12, 45);
+    // Parallelogram *p2 = new Rectangle(12, 45);
 
-    cout << "Parallelogram angle: " << p2->getAngle() << endl;
-    cout << "Parallelogram height: " << p2->getSide() << endl;
-    cout << "Parallelogram base: " << p2->getBase() << endl;
+    // cout << "Parallelogram angle: " << p2->getAngle() << endl;
+    // cout << "Parallelogram height: " << p2->getSide() << endl;
+    // cout << "Parallelogram base: " << p2->getBase() << endl;
 
+    // Square sq1 = Square(10);
+    // // -> Rectangle(10, 10)
+    // cout << "Square angle: " << sq1.getAngle() << endl;
+    // sq1.sayHello();
+
+    Parallelogram *parallelogram = new Parallelogram(10, 10, 45);
+    Parallelogram *rect = new Rectangle(10, 15);
+
+    Parallelogram *square = new Square(10);
+
+    cout << "Get shape name: " << parallelogram->getShapeName() << endl;
+    cout << "Get shape name: " << rect->getShapeName() << endl;
+    cout << "Get shape name: " << square->getShapeName() << endl;
+
+    if(dynamic_cast<Square*>(square)) {
+        cout << "Square is a rectangle" << endl;
+        Square *s = static_cast<Square*>(square);
+        s->sayHello();
+    }
+    
 }

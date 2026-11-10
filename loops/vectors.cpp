@@ -91,8 +91,9 @@ int main() {
     rectangles.push_back(Rectangle(5, 6));
     rectangles.push_back(Rectangle(7, 7));
 
+    int size = rectangles.size();
     cout << "Rectangles: " << endl;
-    for(int i = 0; i < rectangles.size(); i++) 
+    for(int i = 0; i < size; i++) 
         cout << rectangles[i].toString() << endl;
     cout << endl;
 
